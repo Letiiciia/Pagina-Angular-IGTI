@@ -1,0 +1,23 @@
+<h1>Monte seu açai</h1>
+<div class="cabecalho">
+<p><strong>Tamanho</strong></p>
+</div>
+<table>
+  <tr *ngFor="let opcao of opcoes">
+    <td>
+      <label><input type="radio" [checked]="opcoesSelecionadasT.indexOf(opcao) !== -1" (change)="marcaOpcao(opcao)"></label>
+    </td>
+    <td>{{ opcao}}</td>
+  </tr>
+</table>
+<div class="cabecalho">
+<p><strong>Acréscimos</strong></p>
+<p>Escolha até 3</p>
+<div *ngIf="escolhaAteT !== 1" class="status">
+  Escolha até {{escolhaAteT}}
+</div>
+</div>
+<table *ngFor="let opcao of opcoesComplementos">
+  <td><input type="checkbox" (change)="marcaOpcaoC(opcao)" [disabled]="opcoesSelecionadasC.indexOf(opcao) === -1 && opcoesSelecionadasC.length >= escolhaAteC" /></td>
+  <td>{{ opcao }}</td>
+</table>
